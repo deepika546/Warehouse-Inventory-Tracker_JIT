@@ -18,11 +18,11 @@ public class Warehouse {
     public void receiveShipment(String productId, int qty) {
         Product product = inventory.get(productId);
         if (product == null) {
-            System.out.println("❌ Invalid Product ID");
+            System.out.println("Invalid Product ID");
             return;
         }
         product.increaseStock(qty);
-        System.out.println("📦 Received " + qty + " units of " + product.getName());
+        System.out.println("Received " + qty + " units of " + product.getName());
     }
 
     public void fulfillOrder(String productId, int qty) {
@@ -34,7 +34,7 @@ public class Warehouse {
 
         try {
             product.decreaseStock(qty);
-            System.out.println("🛒 Fulfilled " + qty + " orders for " + product.getName());
+            System.out.println("Fulfilled " + qty + " orders for " + product.getName());
             if (product.getQuantity() < product.getThreshold()) {
                 notifyObservers(product);
             }
